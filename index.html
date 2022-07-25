@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      align-items: center;
+    }
+    .content-container {
+      background-color: #cccccc;
+      padding: 50px;
+      width: 70%;
+    }
+    .question-container {
+      padding: 50px;
+      margin-top: 50px;
+      background: white;
+      border-radius: 15px;
+    }
+    .answer-container {
+      margin-top: 20px;
+    }
+    .answer {
+      padding: 5px 10px;
+    }
+    .answer:hover {
+      cursor: pointer;
+      background: #cccccc;
+    }
+    .btn-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .mode-btn {
+      border: none;
+      background: #c8c8c8;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .mode-btn:hover,
+    .clicked {
+      cursor: pointer;
+      background: rgb(70, 70, 70);
+      color: white;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="content-container">
+        <h1>ATA Generator</h1>
+        <div class="question-container">
+          <div class="btn-container">
+            <button class="mode-btn">Number</button>
+            <button class="mode-btn">Title</button>
+          </div>
+          <div>
+            <span style="font-size: 13px">Question</span>
+            <h3 id="question"></h3>
+          </div>
+          <hr />
+          <div class="answer-container">
+            <ul id="answerList">
+              <li class="answer">가나다라</li>
+              <li class="answer">마바사아</li>
+              <li class="answer">도레미</li>
+              <li class="answer">세번째답</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const ATA_GENERAL_GROUP = {
+        5: "Time Limits/Maintenance Check",
+        6: "Demensions & Areas",
+        7: "Lifting & Shoring",
+        8: "Leveling & Weigning",
+        9: "Towing & Taxing",
+        10: "Parking & Mooring",
+        11: "Placard & Marking",
+        12: "Servicing",
+      };
+      const ATA_SYSTEM_GROUP = {
+        20: "Standard Practice-Airframe",
+        21: "Air Conditioning",
+        22: "Auto Flight",
+        23: "Communications",
+        24: "Electrical Power",
+        25: "Equipment/Furnishings",
+        26: "Fire Protection",
+        27: "Flight Controls",
+        28: "Fuel",
+        29: "Hydraulic Power",
+        30: "Ice & Rain Protection",
+        31: "Indicationg/Recording System",
+        32: "Landing Gear",
+        33: "Light",
+        34: "Navigation",
+        35: "Oxygen",
+        36: "Pneumatic",
+        38: "Water/Waste",
+        45: "Central Maintenance System (CMS)",
+        46: "Information System",
+        49: "Airbon Auxiliary Power",
+      };
+      const ATA_STRUCTURE_GROUP = {
+        51: "Structures & Standard Practices",
+        52: "Doors",
+        53: "Fuselage",
+        54: "Nacells/Pylons",
+        55: "Stabilizers",
+        56: "Windows",
+        57: "Wings",
+      };
+      const ATA_POWER_PLANT_GROUP = {
+        70: "Standard Practices - Engines",
+        71: "Power Plant (Package)",
+        72: "Engine",
+        73: "Engine Fuel And Control",
+        74: "Ignition",
+        75: "Air",
+        76: "Engine Controls",
+        77: "Engine Indicating",
+        78: "Exhaust",
+        79: "Oil",
+        80: "Starting",
+      };
+
+      const QuestionObj = {
+        ...ATA_GENERAL_GROUP,
+        ...ATA_SYSTEM_GROUP,
+        ...ATA_STRUCTURE_GROUP,
+        ...ATA_POWER_PLANT_GROUP,
+      };
+
+      const QuestionNumbers = Object.keys(QuestionObj);
+
+      const modeSelector = (() => {
+        let mode = "Mix";
+        return {
+          getMode: () => mode,
+          changeModeToNumber: () => (mode = "Number"),
+          changeModeToTitle: () => (mode = "Title"),
+        };
+      })();
+
+      const $modeBtns = document.querySelectorAll(".mode-btn");
+
+      $modeBtns[0].addEventListener("click", () => {
+        modeSelector.changeModeToNumber();
+        InitialQuestion();
+      });
+      $modeBtns[1].addEventListener("click", () => {
+        modeSelector.changeModeToTitle();
+        InitialQuestion();
+      });
+
+      const $answerList = document.getElementById("answerList");
+      const $question = document.getElementById("question");
+
+      let questionNumber = 0;
+
+      const pickQuestion = () => {
+        const randIdx = Math.floor(Math.random() * QuestionNumbers.length);
+        return randIdx;
+      };
+
+      const printQuestion = () => {
+        const questionIdx = pickQuestion();
+        questionNumber = questionIdx;
+
+        $question.innerText =
+          modeSelector.getMode() === "Number"
+            ? QuestionNumbers[questionNumber]
+            : QuestionObj[QuestionNumbers[questionNumber]];
+      };
+
+      printQuestion();
+
+      const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+
+      const printAnswer = () => {
+        const questionArr = Array(3)
+          .fill()
+          .map(() => pickQuestion());
+        questionArr.push(questionNumber);
+        shuffle(questionArr);
+
+        $answerList.innerHTML = "";
+        const mode = modeSelector.getMode();
+
+        questionArr.forEach((questionIdx, idx) => {
+          const $li = document.createElement("li");
+
+          $li.classList.add("answer");
+
+          $li.innerText =
+            mode === "Number"
+              ? QuestionObj[QuestionNumbers[questionIdx]]
+              : QuestionNumbers[questionIdx];
+
+          $li.addEventListener("click", () => {
+            if (questionIdx === questionNumber) InitialQuestion();
+            else {
+              $li.style.background = "red";
+            }
+          });
+
+          $answerList.append($li);
+        });
+      };
+
+      const InitialQuestion = () => {
+        printQuestion();
+        printAnswer();
+      };
+
+      InitialQuestion();
+    </script>
+  </body>
+</html>
