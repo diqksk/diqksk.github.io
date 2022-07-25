@@ -138,14 +138,14 @@
         80: "Starting",
       };
 
-      const QuestionObj = {
+      const questionObj = {
         ...ATA_GENERAL_GROUP,
         ...ATA_SYSTEM_GROUP,
         ...ATA_STRUCTURE_GROUP,
         ...ATA_POWER_PLANT_GROUP,
       };
 
-      const QuestionNumbers = Object.keys(QuestionObj);
+      const questionNumbers = Object.keys(questionObj);
 
       const modeSelector = (() => {
         let mode = "Mix";
@@ -173,7 +173,7 @@
       let questionNumber = 0;
 
       const pickQuestion = () => {
-        const randIdx = Math.floor(Math.random() * QuestionNumbers.length);
+        const randIdx = Math.floor(Math.random() * questionNumbers.length);
         return randIdx;
       };
 
@@ -183,8 +183,8 @@
 
         $question.innerText =
           modeSelector.getMode() === "Number"
-            ? QuestionNumbers[questionNumber]
-            : QuestionObj[QuestionNumbers[questionNumber]];
+            ? questionNumbers[questionNumber]
+            : questionObj[questionNumbers[questionNumber]];
       };
 
       printQuestion();
@@ -208,8 +208,8 @@
 
           $li.innerText =
             mode === "Number"
-              ? QuestionObj[QuestionNumbers[questionIdx]]
-              : QuestionNumbers[questionIdx];
+              ? questionObj[questionNumbers[questionIdx]]
+              : questionNumbers[questionIdx];
 
           $li.addEventListener("click", () => {
             if (questionIdx === questionNumber) InitialQuestion();
