@@ -4,6 +4,125 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>BaseBall Game</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div>
+        <div>
+          <h1 class="title">
+            <strong>숫자 야구⚾</strong>
+            <div id="ranNum">
+              <div class="btnContainer">
+                <div class="modeBtn">
+                  <div id="soloBtn">Solo</div>
+                  <div id="comBtn">Com</div>
+                </div>
+              </div>
+              <p id="generateBtn">Game Start!</p>
+            </div>
+          </h1>
+          <div id="userNum">
+            <div>
+              <span
+                style="
+                  padding: 5px 20px 10px 20px;
+                  border-radius: 20px;
+                  background: #f0f0f0;
+                "
+              >
+                <input
+                  type="text"
+                  placeholder="3자리 숫자를 입력해 주세요"
+                  maxlength="3"
+                  id="userNumInput"
+                  style="
+                    border: none;
+                    background: none;
+                    padding: 3px;
+                    border-bottom: 1px solid #c3c3c3;
+                  "
+                />
+                <input
+                  type="button"
+                  value="Go"
+                  id="submitBtn"
+                  style="border: none; background: none"
+                />
+              </span>
+            </div>
+            <div id="infoZone">
+              <p id="counter">0회차</p>
+              <p id="ballCounter">
+                <!-- 🔴Ball : 2 🔵Strike : 1  -->
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center">
+          <div class="subContainer">
+            <h2 style="text-align: center; padding: 10px">User 🤔</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>회차</th>
+                  <th>입력 숫자</th>
+                  <th>결과</th>
+                </tr>
+              </thead>
+
+              <tbody id="resultList">
+                <tr>
+                  <td colspan="3">Game Start를 눌러주세요!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="match vs">vs</h3>
+          <div class="subContainer match">
+            <h2 style="text-align: center; padding: 10px">Computer 🤖</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>회차</th>
+                  <th>입력 숫자</th>
+                  <th>결과</th>
+                </tr>
+              </thead>
+
+              <tbody id="comResultList">
+                <tr>
+                  <td colspan="3">Game Start를 눌러주세요!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modalContainer">
+      <div id="modal">
+        <div>
+          <strong>Information</strong>
+        </div>
+        <h4 id="warningText">0 ~ 9 이내의 숫자만 입력할 수 있습니다.</h4>
+      </div>
+    </div>
+
+    <script src="baseball.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ATA Quiz Generator</title>
   </head>
   <style>
@@ -228,4 +347,4 @@
       InitialQuestion();
     </script>
   </body>
-</html>
+</html> -->
