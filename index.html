@@ -2,357 +2,209 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="개백수표 야구게임" />
-    <meta property="og:url" content="www.baeksoo-toy.ga" />
-    <meta
-      property="og:image"
-      content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT594EatYaw10a5FoPzVF85C6ii5Emt1A4IbA&usqp=CAU"
-    />
-    <meta property="og:title" content="baseball game" />
-    <meta property="og:description" content="백수표 야구게임" />
+    <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <title>BaseBall Game</title>
   </head>
 
   <body>
     <div class="container">
-      <div>
-        <div>
-          <h1 class="title">
-            <strong>숫자 야구⚾</strong>
-            <div id="ranNum">
-              <div class="btnContainer">
-                <div class="modeBtn">
-                  <div id="soloBtn">Solo</div>
-                  <div id="comBtn">Com</div>
-                </div>
-              </div>
-              <p id="generateBtn">Game Start!</p>
-            </div>
-          </h1>
-          <div id="userNum">
-            <div>
-              <span
-                style="
-                  padding: 5px 20px 10px 20px;
-                  border-radius: 20px;
-                  background: #f0f0f0;
-                "
-              >
-                <input
-                  type="text"
-                  placeholder="3자리 숫자를 입력해 주세요"
-                  maxlength="3"
-                  id="userNumInput"
-                  style="
-                    border: none;
-                    background: none;
-                    padding: 3px;
-                    border-bottom: 1px solid #c3c3c3;
-                  "
-                />
-                <input
-                  type="button"
-                  value="Go"
-                  id="submitBtn"
-                  style="border: none; background: none"
-                />
-              </span>
-            </div>
-            <div id="infoZone">
-              <p id="counter">0회차</p>
-              <p id="ballCounter">
-                <!-- 🔴Ball : 2 🔵Strike : 1  -->
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: center">
-          <div class="subContainer">
-            <h2 style="text-align: center; padding: 10px">User 🤔</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>회차</th>
-                  <th>입력 숫자</th>
-                  <th>결과</th>
-                </tr>
-              </thead>
-
-              <tbody id="resultList">
-                <tr>
-                  <td colspan="3">Game Start를 눌러주세요!</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <h3 class="match vs">vs</h3>
-          <div class="subContainer match">
-            <h2 style="text-align: center; padding: 10px">Computer 🤖</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>회차</th>
-                  <th>입력 숫자</th>
-                  <th>결과</th>
-                </tr>
-              </thead>
-
-              <tbody id="comResultList">
-                <tr>
-                  <td colspan="3">Game Start를 눌러주세요!</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="modalContainer">
-      <div id="modal">
-        <div>
-          <strong>Information</strong>
-        </div>
-        <h4 id="warningText">0 ~ 9 이내의 숫자만 입력할 수 있습니다.</h4>
-      </div>
-    </div>
-
-    <script src="baseball.js"></script>
-  </body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ATA Quiz Generator</title>
-  </head>
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    .container {
-      display: flex;
-      justify-content: center;
-      height: 100vh;
-      align-items: center;
-    }
-    .content-container {
-      background-color: #cccccc;
-      padding: 50px;
-      width: 70%;
-    }
-    .question-container {
-      padding: 50px;
-      margin-top: 50px;
-      background: white;
-      border-radius: 15px;
-    }
-    .answer-container {
-      margin-top: 20px;
-    }
-    .answer {
-      padding: 5px 10px;
-    }
-    .answer:hover {
-      cursor: pointer;
-      background: #cccccc;
-    }
-    .btn-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .mode-btn {
-      border: none;
-      background: #c8c8c8;
-      padding: 5px;
-      border-radius: 5px;
-    }
-    .mode-btn:hover,
-    .clicked {
-      cursor: pointer;
-      background: rgb(70, 70, 70);
-      color: white;
-    }
-  </style>
-  <body>
-    <div class="container">
-      <div class="content-container">
-        <h1>ATA Generator</h1>
-        <div class="question-container">
-          <div class="btn-container">
-            <button class="mode-btn">Number</button>
-            <button class="mode-btn">Title</button>
+      <div class="quiz-box">
+        <form id="form">
+          <div><h1></h1></div>
+          <div>
+            <input type="text" placeholder="정답을 입력해 주세요" id="input" />
           </div>
           <div>
-            <span style="font-size: 13px">Question</span>
-            <h3 id="question"></h3>
+            <button class="submit">Submit</button>
+            <button class="answer" type="button">Answer</button>
           </div>
-          <hr />
-          <div class="answer-container">
-            <ul id="answerList">
-              <li class="answer">가나다라</li>
-              <li class="answer">마바사아</li>
-              <li class="answer">도레미</li>
-              <li class="answer">세번째답</li>
-            </ul>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
     <script>
-      const ATA_GENERAL_GROUP = {
-        5: "Time Limits/Maintenance Check",
-        6: "Demensions & Areas",
-        7: "Lifting & Shoring",
-        8: "Leveling & Weigning",
-        9: "Towing & Taxing",
-        10: "Parking & Mooring",
-        11: "Placard & Marking",
-        12: "Servicing",
-      };
-      const ATA_SYSTEM_GROUP = {
-        20: "Standard Practice-Airframe",
-        21: "Air Conditioning",
-        22: "Auto Flight",
-        23: "Communications",
-        24: "Electrical Power",
-        25: "Equipment/Furnishings",
-        26: "Fire Protection",
-        27: "Flight Controls",
-        28: "Fuel",
-        29: "Hydraulic Power",
-        30: "Ice & Rain Protection",
-        31: "Indicationg/Recording System",
-        32: "Landing Gear",
-        33: "Light",
-        34: "Navigation",
-        35: "Oxygen",
-        36: "Pneumatic",
-        38: "Water/Waste",
-        45: "Central Maintenance System (CMS)",
-        46: "Information System",
-        49: "Airbon Auxiliary Power",
-      };
-      const ATA_STRUCTURE_GROUP = {
-        51: "Structures & Standard Practices",
-        52: "Doors",
-        53: "Fuselage",
-        54: "Nacells/Pylons",
-        55: "Stabilizers",
-        56: "Windows",
-        57: "Wings",
-      };
-      const ATA_POWER_PLANT_GROUP = {
-        70: "Standard Practices - Engines",
-        71: "Power Plant (Package)",
-        72: "Engine",
-        73: "Engine Fuel And Control",
-        74: "Ignition",
-        75: "Air",
-        76: "Engine Controls",
-        77: "Engine Indicating",
-        78: "Exhaust",
-        79: "Oil",
-        80: "Starting",
+      const $form = document.getElementById("form");
+      const $input = document.getElementById("input");
+      const $h1 = document.getElementsByTagName("h1")[0];
+      const $answerBtn = document.querySelector(".answer");
+      let answer = "";
+      let title = "";
+
+      const startGame = (keys) => {
+        pickQuestion(keys);
+        $input.value = "";
+        $answerBtn.innerHTML = "Answer";
+        $input.focus();
       };
 
-      const questionObj = {
-        ...ATA_GENERAL_GROUP,
-        ...ATA_SYSTEM_GROUP,
-        ...ATA_STRUCTURE_GROUP,
-        ...ATA_POWER_PLANT_GROUP,
-      };
+      $form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-      const questionNumbers = Object.keys(questionObj);
+        if ($input.value !== answer) vibration();
+        else startGame(keys);
 
-      const modeSelector = (() => {
-        let mode = "Mix";
-        return {
-          getMode: () => mode,
-          changeModeToNumber: () => (mode = "Number"),
-          changeModeToTitle: () => (mode = "Title"),
-        };
-      })();
-
-      const $modeBtns = document.querySelectorAll(".mode-btn");
-
-      $modeBtns[0].addEventListener("click", () => {
-        modeSelector.changeModeToNumber();
-        InitialQuestion();
-      });
-      $modeBtns[1].addEventListener("click", () => {
-        modeSelector.changeModeToTitle();
-        InitialQuestion();
+        $input.value = "";
+        $input.focus();
       });
 
-      const $answerList = document.getElementById("answerList");
-      const $question = document.getElementById("question");
+      $answerBtn.addEventListener("click", (e) => {
+        e.preventDefault();
 
-      let questionNumber = 0;
+        if (e.target.innerHTML === "Next") {
+          e.target.innerHTML = "Answer";
+          startGame(keys);
+        } else {
+          $input.value = answer;
+          e.target.innerHTML = "Next";
+        }
+      });
 
       const pickQuestion = () => {
-        const randIdx = Math.floor(Math.random() * questionNumbers.length);
-        return randIdx;
+        const randomKey = keys[Math.floor(Math.random() * keys.length)];
+
+        if (isTitle()) {
+          $h1.innerHTML = randomKey;
+          title = randomKey;
+          answer = codes[randomKey];
+        } else {
+          $h1.innerHTML = codes[randomKey];
+          title = codes[randomKey];
+          answer = randomKey;
+        }
       };
 
-      const printQuestion = () => {
-        const questionIdx = pickQuestion();
-        questionNumber = questionIdx;
+      const isTitle = () => Math.random() >= 0.5;
 
-        $question.innerText =
-          modeSelector.getMode() === "Number"
-            ? questionNumbers[questionNumber]
-            : questionObj[questionNumbers[questionNumber]];
+      const vibration = () => {
+        const target = document.querySelector(".quiz-box");
+        target.classList.add("vibration");
+
+        setTimeout(() => {
+          target.classList.remove("vibration");
+        }, 400);
       };
 
-      const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
-
-      const printAnswer = () => {
-        const questionArr = Array(3)
-          .fill()
-          .map(() => pickQuestion());
-        questionArr.push(questionNumber);
-        shuffle(questionArr);
-
-        $answerList.innerHTML = "";
-        const mode = modeSelector.getMode();
-
-        questionArr.forEach((questionIdx, idx) => {
-          const $li = document.createElement("li");
-
-          $li.classList.add("answer");
-
-          $li.innerText =
-            mode === "Number"
-              ? questionObj[questionNumbers[questionIdx]]
-              : questionNumbers[questionIdx];
-
-          $li.addEventListener("click", () => {
-            if (questionIdx === questionNumber) InitialQuestion();
-            else {
-              $li.style.background = "red";
-            }
-          });
-
-          $answerList.append($li);
-        });
+      const codes = {
+        서울: "ICN",
+        서울: "SEL",
+        서울: "GMP",
+        제주: "CJU",
+        부산: "PUS",
+        울산: "USN",
+        여수: "RSU",
+        광주: "KWJ",
+        청주: "CJJ",
+        진주: "HIN",
+        대구: "TAE",
+        군산: "KUV",
+        원주: "WJU",
+        포항경주: "KPO",
+        도쿄: "TYO",
+        도쿄: "HND",
+        도쿄: "NRT",
+        오사카: "OSA",
+        오사카: "KIX",
+        나고야: "NGO",
+        후쿠오카: "FUK",
+        가고시마: "KOJ",
+        니가타: "KIJ",
+        오카야마: "OKJ",
+        삿포로: "SPK",
+        삿포로: "CTS",
+        아오모리: "AOJ",
+        오이타: "OIT",
+        오키나와: "OKA",
+        기타큐슈: "KKJ",
+        베이징: "BJS",
+        베이징: "PEK",
+        톈진: "TSN",
+        칭다오: "TAO",
+        상하이: "SHA",
+        상하이: "PVG",
+        상하이: "SHA",
+        광저우: "CAN",
+        샤먼: "XMN",
+        선양: "SHE",
+        우한: "WUH",
+        쿤밍: "KMG",
+        지난: "TNA",
+        로스앤젤레스: "LAX",
+        뉴욕: "NYC",
+        뉴욕: "JFK",
+        시카고: "CHI",
+        시카고: "ORD",
+        애틀랜타: "ATL",
+        댈러스: "DFW",
+        샌프란시스코: "SFO",
+        시애틀: "SEA",
+        워싱턴: "WAS",
+        워싱턴: "IAD",
+        호놀룰루: "HNL",
+        라스베이거스: "LAS",
+        보스턴: "BOS",
+        밴쿠버: "YVR",
+        토론토: "YTO",
+        토론토: "YYZ",
+        파리: "PAR",
+        파리: "CDG",
+        프랑크푸르트: "FRA",
+        런던: "LON",
+        런던: "LHR",
+        취리히: "ZRH",
+        암스테르담: "AMS",
+        로마: "ROM",
+        로마: "FCO",
+        밀라노: "MIL",
+        밀라노: "MXP",
+        비엔나: "VIE",
+        마드리드: "MAD",
+        바르셀로나: "BCN",
+        프라하: "PRG",
+        이스탄불: "IST",
+        텔아비브: "TLV",
+        자그레브: "ZAG",
+        부다페스트: "BUD",
+        방콕: "BKK",
+        푸껫: "HKT",
+        치앙마이: "CNX",
+        싱가포르: "SIN",
+        마닐라: "MNL",
+        세부: "CEB",
+        자카르타: "JKT",
+        자카르타: "CGK",
+        쿠알라룸푸르: "KUL",
+        뭄바이: "BOM",
+        델리: "DEL",
+        호찌민: "SGN",
+        하노이: "HAN",
+        다낭: "DAD",
+        카트만두: "KTM",
+        양곤: "RGN",
+        프놈펜: "PNH",
+        콜롬보: "CMB",
+        괌: "GUM",
+        모스크바: "MOW",
+        모스크바: "SVO",
+        상트페테르부르크: "LED",
+        블라디보스토크: "VVO",
+        이르쿠츠크: "IKT",
+        타슈켄트: "TAS",
+        두바이: "DXB",
+        고마쓰: "KMQ",
+        가나자와: "KMQ",
+        덴파사르: "DPS",
+        발리: "DPS",
+        몰디브: "MLE",
+        말레: "MLE",
+        팔라우: "ROR",
+        코로르: "ROR",
+        나트랑: "CXR",
+        냐짱: "CXR",
       };
 
-      const InitialQuestion = () => {
-        printQuestion();
-        printAnswer();
-      };
+      const keys = Object.keys(codes);
 
-      InitialQuestion();
+      startGame(keys);
     </script>
   </body>
-</html> -->
+</html>
